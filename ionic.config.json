@@ -1,0 +1,7 @@
+{
+  "name": "apispooty",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
