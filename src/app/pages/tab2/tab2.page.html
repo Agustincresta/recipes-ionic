@@ -1,0 +1,41 @@
+<ion-header class="ion-no-border" fixed>
+
+  <ion-searchbar inputmode="text"
+  (ionChange)="onSearchChange($event)"
+  placeholder="Search Recipes"
+  autocomplete="on"
+  translucent="false"
+  color="medium"
+
+  ></ion-searchbar>
+
+</ion-header>
+
+<ion-content fullscreen [scrollEvents]="true">
+
+
+  <ion-toolbar color="primary" class="ion-text-center">
+    <ion-title>Recipes</ion-title>
+  </ion-toolbar>
+
+  <p class="ion-text-center" *ngIf="mensaje">{{mensaje}}</p>
+
+  <app-recetas [recetas]=recetas></app-recetas>
+
+  
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="boton" >
+    <ion-fab-button color="primary" size="small" (click)="ScrollToTop()">
+      <ion-icon name="arrow-up-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+<ion-infinite-scroll [disabled]="recetas.length == 0"
+  threshold="150px" 
+  (ionInfinite)="loadData( $event )">
+  <ion-infinite-scroll-content loadingSpinner="crescent" 
+    loadingText="Cargando data...">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
+</ion-content>

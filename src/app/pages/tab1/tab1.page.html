@@ -1,0 +1,39 @@
+<ion-header class="ion-no-border" fixed>
+
+  <ion-searchbar inputmode="text"
+  (ionChange)="onSearchChange($event)"
+  placeholder="Search Ingredients"
+  autocomplete="on"
+  translucent="false"
+  color="medium"
+
+  ></ion-searchbar>
+</ion-header>
+
+<ion-content fullscreen [scrollEvents]="true">
+
+  <ion-toolbar color="primary" class="ion-text-center">
+    <ion-title>Ingredients</ion-title>
+  </ion-toolbar>
+
+  
+<p class="ion-text-center">{{mensaje}}</p>
+
+  <app-ingredientes [ingredients]="ingredients"></app-ingredientes>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="boton" >
+    <ion-fab-button color="primary" size="small" (click)="ScrollToTop()">
+      <ion-icon name="arrow-up-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  
+  <ion-infinite-scroll
+    threshold="150px" 
+    (ionInfinite)="loadData( $event )"
+    color="primary">
+    <ion-infinite-scroll-content loadingSpinner="crescent" 
+      loadingText="Cargando data..."
+      color="primary">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

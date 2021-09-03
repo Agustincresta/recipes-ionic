@@ -1,0 +1,36 @@
+
+    <ion-list *ngIf="recetas.length == 0">
+        <ion-item-sliding *ngFor="let receta of randoms">
+
+            <ion-item >
+                <ion-label>
+                    <h3>{{ receta.title }}</h3>
+                    
+                </ion-label>
+
+                <ion-button (click)="mostrarModal(receta)" size="small">
+                More info
+                </ion-button>
+
+            </ion-item>
+        </ion-item-sliding>
+
+    </ion-list>
+
+  <ion-list *ngIf="recetas.length != 0">
+      <ion-item-sliding *ngFor="let receta of recetas ">
+
+          <ion-item >
+              <ion-label>
+                  <h3>{{ receta.title}}</h3>
+                  
+              </ion-label>
+
+              <ion-button (click)="mostrarModal(receta)" size="small">
+                More info
+              </ion-button>
+
+          </ion-item>
+      </ion-item-sliding>
+
+  </ion-list>
